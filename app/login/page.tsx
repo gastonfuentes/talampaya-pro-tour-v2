@@ -25,7 +25,7 @@ export default function Login({
       return redirect("/login?message=No se pudo autenticar al usuario");
     }
 
-    return redirect("/protected");
+    return redirect("/dashboard/main");
   };
 
   const signUp = async (formData: FormData) => {
