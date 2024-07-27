@@ -1,7 +1,18 @@
-import React from 'react'
 
-export const CouplesGrid = () => {
+import { createClientServer } from '@/utils/supabase/server'
+
+export const CouplesGrid = async () => {
+    const supabase = createClientServer()
+    const { data: parejas } = await supabase.from('pareja').select()
+
     return (
-        <div>CouplesGrid</div>
+        <div>
+            <div>CouplesGrid</div>
+            <pre>{JSON.stringify(parejas, null, 2)}</pre>
+        </div>
     )
 }
+
+
+
+

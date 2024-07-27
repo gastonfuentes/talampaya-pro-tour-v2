@@ -14,10 +14,10 @@ const menuItems = [
         subTitle: 'visualizacion'
     },
     {
-        path: '/dashboard/cargarparejas',
+        path: '/dashboard/cargar-zonas',
         icon: <IoAddCircleOutline size={30} />,
-        title: 'Cargar Parejas',
-        subTitle: 'pagina para cargar perajas'
+        title: 'Cargar Zonas',
+        subTitle: 'seccion para cargar zonas del torneo'
     },
     {
         path: '/dashboard/zonas',
