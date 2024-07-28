@@ -1,5 +1,7 @@
 import { createClientServer } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
+import { Button } from "@/components/ui/button"
+
 
 export default async function DashboardMainPage() {
     const supabase = createClientServer();
@@ -27,6 +29,9 @@ export default async function DashboardMainPage() {
                 </nav>
             </div>
             <h1>soy el dashboard pa</h1>
+
+            <Button variant={"destructive"} > shadcn </Button>
+
         </>
     )
 }
