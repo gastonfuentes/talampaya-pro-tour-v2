@@ -30,6 +30,7 @@ export default async function DashboardMainPage() {
             </div>
             <h1>soy el dashboard pa</h1>
 
+            {/* probando boton de shadcn */}
             <Button variant={"destructive"} > shadcn </Button>
 
         </>
