@@ -11,7 +11,9 @@ const nextConfig = {
                 hostname: 'raw.githubusercontent.com'
             },
         ]
-    }
+    },
+
+    reactStrictMode: false
 };
 
 module.exports = nextConfig;

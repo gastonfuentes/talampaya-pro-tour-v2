@@ -13,7 +13,7 @@ export const addCouple = async (formData: FormData) => {
 
     const supabase = createClientServer();
 
-    const { error } = await supabase.from('pareja').insert({
+    const { error } = await supabase.from('parejas').insert({
         name1: name1,
         last_name1: last_name1,
         name2: name2,

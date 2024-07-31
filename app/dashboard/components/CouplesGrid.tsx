@@ -3,7 +3,7 @@ import { createClientServer } from '@/utils/supabase/server'
 
 export const CouplesGrid = async () => {
     const supabase = createClientServer()
-    const { data: parejas } = await supabase.from('pareja').select()
+    const { data: parejas } = await supabase.from('parejas').select()
 
     return (
         <div>
