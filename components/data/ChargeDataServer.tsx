@@ -13,15 +13,15 @@ export const ChargeDataServer = async () => {
 
     const supabase = createClientServer()
 
+    const { data: generos } = await supabase.from('generos').select('id, gender')
+    const { data: categorias } = await supabase.from('categoriasTalampaya').select().eq('genero', 11)
     const { data: parejas } = await supabase.from('parejas').select()
 
-    console.log(parejas);
-
-
+    console.log(generos);
 
     return (
         <>
-            {parejas ? <ChargeDataLocal parejas={parejas} /> : <h2>cargandinnn</h2>}
+            {generos && parejas ? <ChargeDataLocal parejas={parejas} generos={generos} /> : <h2>cargando informacion</h2>}
         </>
     )
 }

@@ -2,6 +2,8 @@
 
 
 import { Couple, useCoupleStore } from "@/store/couples.store";
+import { useZonesBoundStore } from "@/store/zones";
+import { Gender } from "@/store/zones/gender.slice";
 
 
 /* interface Props {
@@ -10,9 +12,10 @@ import { Couple, useCoupleStore } from "@/store/couples.store";
 
 interface Props {
     parejas: Couple[]
+    generos: Gender[]
 }
 
-export const ChargeDataLocal = ({ parejas }: Props) => {
+export const ChargeDataLocal = ({ parejas, generos }: Props) => {
 
 
     /*  const addCouples = useCoupleStore((state) => state.addCouples); */
@@ -21,6 +24,9 @@ export const ChargeDataLocal = ({ parejas }: Props) => {
 
     const addCouples = useCoupleStore((state) => state.addCouples)
     addCouples(parejas)
+
+    const setGenders = useZonesBoundStore((state) => state.setGenders)
+    setGenders(generos)
 
     return (
         <>
