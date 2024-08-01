@@ -1,5 +1,6 @@
 import { createClientServer } from '@/utils/supabase/server'
-import { GenderButton } from './GenderButton'
+import { GenderSelect } from './GenderSelect'
+
 
 
 export const GenderGrid = async () => {
@@ -9,11 +10,10 @@ export const GenderGrid = async () => {
     return (
         <div>
             <div>Gender grid</div>
-            <div className='flex gap-1'>
-                {generos?.map(genero => (
-                    <GenderButton key={genero.id} gender={genero.gender} id={genero.id} />
-                ))}
-            </div>
+
+            {generos ? <GenderSelect generos={generos} /> : ''}
+
+
         </div>
     )
 }

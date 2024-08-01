@@ -17,7 +17,7 @@ export const useZoneStore = create<ZoneState>()(
     devtools(
         (set) => ({
 
-            zoneGenero: null,
+            zoneGenero: 10,
 
             setZoneGenero: (id: number) => set({ zoneGenero: id }),
 
