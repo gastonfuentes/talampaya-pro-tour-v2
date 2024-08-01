@@ -16,7 +16,7 @@ export default function CargarZonasPage() {
             <h1>Hello CargarZonasPage</h1>
             <GenderGrid />
             <CategoriesGrid />
-            <AddCouple />
+            {/*  <AddCouple /> */}
             <CouplesGrid />
         </div>
     );

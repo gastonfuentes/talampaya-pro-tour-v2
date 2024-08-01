@@ -1,14 +1,19 @@
 import { createClientServer } from '@/utils/supabase/server'
+import { GenderButton } from './GenderButton'
 
 
 export const GenderGrid = async () => {
     const supabase = createClientServer()
-    const { data: genero } = await supabase.from('generos').select(`id, gender`)
+    const { data: generos } = await supabase.from('generos').select(`id, gender`)
 
     return (
         <div>
             <div>Gender grid</div>
-            <pre>{JSON.stringify(genero, null, 2)}</pre>
+            <div className='flex gap-1'>
+                {generos?.map(genero => (
+                    <GenderButton key={genero.id} gender={genero.gender} id={genero.id} />
+                ))}
+            </div>
         </div>
     )
 }

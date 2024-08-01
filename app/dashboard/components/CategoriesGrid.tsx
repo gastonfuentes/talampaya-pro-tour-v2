@@ -9,7 +9,11 @@ export const CategoriesGrid = async () => {
 
 
     /* consulta para traer las categorias de acuerdo al genero */
-    const { data: categorias, error } = await supabase.from('ganero_categorias').select(`*, categorias (category)`).eq('genero_id', gender)
+    /* const { data: categorias, error } = await supabase.from('ganero_categorias').select(`*, categorias (category)`).eq('genero_id', gender) */
+
+
+    const { data: categorias, error } = await supabase.from('categoriasTalampaya').select()
+
 
     /* console.log(error?.message); */
 
