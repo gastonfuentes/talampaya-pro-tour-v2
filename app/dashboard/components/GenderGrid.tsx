@@ -1,17 +1,20 @@
-import { createClientServer } from '@/utils/supabase/server'
+'use client'
+
+
+import { useZonesBoundStore } from '@/store/zones'
 import { GenderSelect } from './GenderSelect'
 
 
+export const GenderGrid = () => {
 
-export const GenderGrid = async () => {
-    const supabase = createClientServer()
-    const { data: generos } = await supabase.from('generos').select(`id, gender`)
+    const genders = useZonesBoundStore((state) => state.genders)
+
 
     return (
         <div>
             <div>Gender grid</div>
 
-            {generos ? <GenderSelect generos={generos} /> : ''}
+            {genders ? <GenderSelect generos={genders} /> : ''}
 
 
         </div>

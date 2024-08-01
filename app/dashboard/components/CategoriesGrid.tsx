@@ -1,27 +1,24 @@
-import { createClientServer } from "@/utils/supabase/server"
+'use client'
 
 
-export const CategoriesGrid = async () => {
-
-    const gender: number = 10
-
-    const supabase = createClientServer()
+import { useZonesBoundStore } from '@/store/zones'
+import { GenderSelect } from './GenderSelect'
+import { CategoriSelect } from './CategoriSelect'
 
 
-    /* consulta para traer las categorias de acuerdo al genero */
-    /* const { data: categorias, error } = await supabase.from('ganero_categorias').select(`*, categorias (category)`).eq('genero_id', gender) */
+export const CategoriesGrid = () => {
 
 
-    const { data: categorias, error } = await supabase.from('categoriasTalampaya').select()
-
-
-    /* console.log(error?.message); */
+    const orderedCategories = useZonesBoundStore((state) => state.orderedCategories)
 
 
     return (
         <div>
-            <div>categorias grid</div>
-            <pre>{JSON.stringify(categorias, null, 2)}</pre>
+            <div>Categori grid</div>
+
+            {orderedCategories ? <CategoriSelect categories={orderedCategories} /> : ''}
+
+
         </div>
     )
 }

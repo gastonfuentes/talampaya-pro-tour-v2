@@ -2,7 +2,7 @@ import { StateCreator } from "zustand";
 
 
 export interface Gender {
-    id: number;
+    id: string;
     gender: string
 }
 

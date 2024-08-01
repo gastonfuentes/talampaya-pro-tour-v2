@@ -1,9 +1,9 @@
 import { createClientServer } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
-import { Button } from "@/components/ui/button"
 
 
-export default async function DashboardMainPage() {
+
+export default async function DashboardPage() {
     const supabase = createClientServer();
 
     const {
@@ -16,6 +16,7 @@ export default async function DashboardMainPage() {
 
     return (
         <>
+
             <div className="w-full">
                 <div className="py-6 font-bold bg-purple-200 text-center">
                     This is a protected page that you can only see as an authenticated
@@ -28,10 +29,7 @@ export default async function DashboardMainPage() {
                     </div> */}
                 </nav>
             </div>
-            <h1>soy el dashboard MAIN pa</h1>
-
-            {/* probando boton de shadcn */}
-            <Button variant={"destructive"} > shadcn </Button>
+            <h1>soy el dashboard pa</h1>
 
         </>
     )
