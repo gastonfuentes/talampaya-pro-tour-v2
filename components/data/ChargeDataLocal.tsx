@@ -1,9 +1,9 @@
 'use client'
 
 
-import { Couple, useCoupleStore } from "@/store/couples.store";
 import { useZonesBoundStore } from "@/store/zones";
 import { Category } from "@/store/zones/category.slice";
+import { Couple } from "@/store/zones/couple.slice";
 import { Gender } from "@/store/zones/gender.slice";
 
 
@@ -27,15 +27,15 @@ export const ChargeDataLocal = ({ parejas, generos, categories }: Props) => {
     /* const addCouple = useCoupleStore((state) => state.addCouple);
     addCouple(pareja.id, pareja.name1, pareja.name2, pareja.created_at, pareja.last_name1, pareja.last_name2) */
 
-
-    const addCouples = useCoupleStore((state) => state.addCouples)
-    addCouples(parejas)
-
     const setGenders = useZonesBoundStore((state) => state.setGenders)
     setGenders(generos)
 
     const setCategories = useZonesBoundStore((state) => state.setCategories)
     setCategories(categories)
+
+    const setCouples = useZonesBoundStore((state) => state.setCouples)
+    setCouples(parejas)
+
 
     return (
         <>

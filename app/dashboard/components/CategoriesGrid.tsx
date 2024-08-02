@@ -2,7 +2,6 @@
 
 
 import { useZonesBoundStore } from '@/store/zones'
-import { GenderSelect } from './GenderSelect'
 import { CategoriSelect } from './CategoriSelect'
 
 

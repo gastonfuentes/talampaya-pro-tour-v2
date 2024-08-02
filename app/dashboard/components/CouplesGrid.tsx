@@ -1,14 +1,28 @@
+'use client'
 
-import { createClientServer } from '@/utils/supabase/server'
 
-export const CouplesGrid = async () => {
-    const supabase = createClientServer()
-    const { data: parejas } = await supabase.from('parejas').select()
+import { useZonesBoundStore } from '@/store/zones'
+import { CategoriSelect } from './CategoriSelect'
+import { CoupleCard } from './CoupleCard'
+
+
+export const CouplesGrid = () => {
+
+
+    /*   const orderedCategories = useZonesBoundStore((state) => state.orderedCategories) */
+
+    const orderedCouples = useZonesBoundStore((state) => state.orderedCouples)
+
 
     return (
         <div>
-            <div>CouplesGrid</div>
-            <pre>{JSON.stringify(parejas, null, 2)}</pre>
+            <div>Parejas grid</div>
+
+            {orderedCouples?.map(couple => (
+                <CoupleCard key={couple.id} couple={couple} />
+            ))}
+
+
         </div>
     )
 }

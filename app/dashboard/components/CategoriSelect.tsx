@@ -7,6 +7,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import { useZonesBoundStore } from "@/store/zones";
 
 
 interface Category {
@@ -21,12 +22,17 @@ interface Props {
 export const CategoriSelect = ({ categories }: Props) => {
 
 
-    console.log(categories);
+    const setOrderedCouple = useZonesBoundStore(state => state.setOrderedCouple)
+
+    const onChangeSelect = (value: string) => {
+        console.log(value);
+        setOrderedCouple(value)
+    }
 
     return (
 
 
-        <Select>
+        <Select onValueChange={onChangeSelect}>
             <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Categorias" />
             </SelectTrigger>
@@ -34,7 +40,7 @@ export const CategoriSelect = ({ categories }: Props) => {
                 {
                     categories.map(category => (
 
-                        <SelectItem value={category.name} key={category.id}>{category.name}</SelectItem>
+                        <SelectItem value={category.id} key={category.id}>{category.name}</SelectItem>
                     ))
                 }
             </SelectContent>
