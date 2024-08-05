@@ -1,6 +1,6 @@
 import { createClientServer } from "@/utils/supabase/server";
 import { CategoriesGrid } from "../components/CategoriesGrid";
-import { CouplesGrid } from "../components/CouplesGrid";
+import { ChargeZone } from "../components/ChargeZone";
 import { GenderGrid } from "../components/GenderGrid";
 import { redirect } from "next/navigation";
 import { ChargeDataServer } from "@/components/data/ChargeDataServer";
@@ -27,7 +27,7 @@ export default async function CargarZonasPage() {
                 <CategoriesGrid />
             </div>
             {/*  <AddCouple /> */}
-            <CouplesGrid />
+            <ChargeZone />
         </div>
     );
 }

@@ -1,6 +1,7 @@
 'use client'
 
 
+import { useAsyncStore } from "@/app/hooks/useAsyncStore";
 import { useZonesBoundStore } from "@/store/zones";
 import { Category } from "@/store/zones/category.slice";
 import { Couple } from "@/store/zones/couple.slice";
@@ -35,6 +36,7 @@ export const ChargeDataLocal = ({ parejas, generos, categories }: Props) => {
 
     const setCouples = useZonesBoundStore((state) => state.setCouples)
     setCouples(parejas)
+
 
 
     return (
