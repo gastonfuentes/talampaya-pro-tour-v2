@@ -22,6 +22,7 @@ export interface CoupleSlice {
     draggingCoupleId?: string;
     coupleOne: Couple | undefined;
     coupleTwo: Couple | undefined;
+    coupleThree: Couple | undefined;
 
     setCouples: (array: Couple[]) => void
     setOrderedCouple: (categoriaId: string) => void
@@ -32,6 +33,7 @@ export interface CoupleSlice {
 
     setCoupleOne: (id: string) => void
     setCoupleTwo: (id: string) => void
+    setCoupleThree: (id: string) => void
 
     //getCouplesNotAssigned: () => Couple[]
 
@@ -62,6 +64,7 @@ export const createCoupleSlice: StateCreator<CoupleSlice> = (set, get) => ({
     draggingCoupleId: undefined,
     coupleOne: undefined,
     coupleTwo: undefined,
+    coupleThree: undefined,
     designatedCouples: [],
 
     setCouples: (array: Couple[]) => set({ couples: array }),
@@ -75,6 +78,7 @@ export const createCoupleSlice: StateCreator<CoupleSlice> = (set, get) => ({
 
     setCoupleOne: (id: string) => set({ coupleOne: get().couples.find(couple => couple.id === id) }),
     setCoupleTwo: (id: string) => set({ coupleTwo: get().couples.find(couple => couple.id === id) }),
+    setCoupleThree: (id: string) => set({ coupleThree: get().couples.find(couple => couple.id === id) }),
 
 
     setNewOrderedCouples: (id: string) => {
@@ -142,12 +146,13 @@ export const createCoupleSlice: StateCreator<CoupleSlice> = (set, get) => ({
 
         if (position === 'position1') set({ coupleOne: undefined })
         if (position === 'position2') set({ coupleTwo: undefined })
-        //if(position === 'position3') set({ coupleTwo : undefined })
+        if (position === 'position3') set({ coupleThree: undefined })
     },
 
     removeAllCouplesZone: () => set({
         coupleOne: undefined,
-        coupleTwo: undefined
+        coupleTwo: undefined,
+        coupleThree: undefined,
     })
 
     // getCouplesNotAssigned: () => get().orderedCouples.filter(couple => couple.asignado === false)

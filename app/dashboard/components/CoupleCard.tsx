@@ -20,7 +20,7 @@ export const CoupleCard = ({ couple }: Props) => {
             draggable={true}
             onDragStart={() => setDraggingCoupleId(couple.id)}
             onDragEnd={() => removeDraggingCoupleId()}
-            className="flex flex-row gap-1 p-1 border rounded-xl mb-1 font-light text-xs justify-center bg-white">
+            className="flex flex-row gap-1 p-1 border rounded-xl mb-1 font-light text-xs justify-center bg-gray-300">
             <div> {couple.nombre_completo} </div>
             <span> / </span>
             <div> {couple.nombre_completo_pareja} </div>
