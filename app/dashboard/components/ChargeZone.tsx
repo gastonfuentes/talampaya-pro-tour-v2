@@ -3,9 +3,12 @@
 
 import { ZoneGrid } from './ZoneGrid'
 import { CouplesGrid } from './CouplesGrid'
+import { useZonesBoundStore } from '@/store/zones'
 
 
 export const ChargeZone = () => {
+
+
 
     return (
         <>

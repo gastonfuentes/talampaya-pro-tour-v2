@@ -17,6 +17,11 @@ export const ZoneGrid = ({ position }: Props) => {
     const draggingCoupleId = useZonesBoundStore(state => state.draggingCoupleId)
     const setCoupleOne = useZonesBoundStore(state => state.setCoupleOne)
     const coupleOne = useZonesBoundStore(state => state.coupleOne)
+    const coupleTwo = useZonesBoundStore(state => state.coupleTwo)
+    const setCoupleTwo = useZonesBoundStore(state => state.setCoupleTwo)
+
+    const setNewOrderedCouples = useZonesBoundStore(state => state.setNewOrderedCouples)
+    const setDesignatedCouples = useZonesBoundStore(state => state.setDesignatedCouples)
 
 
     const [hidratado, setHidratado] = useState(false)
@@ -30,13 +35,6 @@ export const ZoneGrid = ({ position }: Props) => {
 
 
 
-
-    /*    const draggingCoupleId = useAsyncStore(useZonesBoundStore, state => state.draggingCoupleId)
-       const setCoupleOne = useAsyncStore(useZonesBoundStore, state => state.setCoupleOne)
-       const coupleOne = useAsyncStore(useZonesBoundStore, state => state.coupleOne) */
-
-
-
     const handleOver = (event: DragEvent<HTMLTableCellElement>) => {
         event.preventDefault();
         console.log('desde la zona rey');
@@ -44,7 +42,24 @@ export const ZoneGrid = ({ position }: Props) => {
 
     const handleDrop = (event: DragEvent<HTMLTableCellElement>) => {
         event.preventDefault();
-        setCoupleOne!(draggingCoupleId!)
+        setCoupleOne!(draggingCoupleId!);
+
+        //actualiza el array de parejas ordenadas por categoria
+        setNewOrderedCouples!(draggingCoupleId!);
+        //agrega pareja al array de parejas designadas
+        setDesignatedCouples(draggingCoupleId!)
+    }
+
+    const handleDropCoupleTwo = (event: DragEvent<HTMLTableCellElement>) => {
+        event.preventDefault();
+
+
+        setCoupleTwo!(draggingCoupleId!);
+
+        //actualiza el array de parejas ordenadas por categoria
+        setNewOrderedCouples!(draggingCoupleId!);
+        //agrega pareja al array de parejas designadas
+        setDesignatedCouples(draggingCoupleId!)
     }
 
 
@@ -98,8 +113,14 @@ export const ZoneGrid = ({ position }: Props) => {
                             <table>
                                 <tbody>
                                     <tr>
-                                        <td className="border-r-2 p-1">B</td>
-                                        <td>FANTASMA LA VALERIA</td>
+                                        <td className="border-r-2 p-1">A</td>
+                                        <td
+                                            className="w-full bg-slate-100"
+                                            onDragOver={handleOver}
+                                            onDrop={handleDropCoupleTwo}
+                                        >
+                                            {coupleTwo ? <CoupleCard couple={coupleTwo} /> : null}
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
