@@ -62,6 +62,13 @@ export const ZoneGrid = ({ position }: Props) => {
         setDesignatedCouples(draggingCoupleId!)
     }
 
+    const handleStart = (event: DragEvent<HTMLTableCellElement>) => {
+        /* event.preventDefault() */
+        console.log(event.currentTarget.id);
+        event.dataTransfer.setData('text', event.currentTarget.id)
+
+    }
+
 
 
 
@@ -104,6 +111,8 @@ export const ZoneGrid = ({ position }: Props) => {
                                             className="w-full bg-slate-100"
                                             onDragOver={handleOver}
                                             onDrop={handleDrop}
+                                            onDragStart={handleStart}
+                                            id="position1"
                                         >
                                             {coupleOne ? <CoupleCard couple={coupleOne} /> : null}
                                         </td>
@@ -118,6 +127,8 @@ export const ZoneGrid = ({ position }: Props) => {
                                             className="w-full bg-slate-100"
                                             onDragOver={handleOver}
                                             onDrop={handleDropCoupleTwo}
+                                            onDragStart={handleStart}
+                                            id="position2"
                                         >
                                             {coupleTwo ? <CoupleCard couple={coupleTwo} /> : null}
                                         </td>

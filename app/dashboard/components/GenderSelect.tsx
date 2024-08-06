@@ -25,6 +25,7 @@ export const GenderSelect = ({ generos }: Props) => {
 
     const setOrderedCategories = useZonesBoundStore(state => state.setOrderedCategories)
     const setEmptyOrderedCouple = useZonesBoundStore(state => state.setEmptyOrderedCouple)
+    const removeAllCouplesZone = useZonesBoundStore(state => state.removeAllCouplesZone)
 
 
 
@@ -32,6 +33,7 @@ export const GenderSelect = ({ generos }: Props) => {
         console.log(value);
         setOrderedCategories(value)
         setEmptyOrderedCouple()
+        removeAllCouplesZone()
     }
 
 

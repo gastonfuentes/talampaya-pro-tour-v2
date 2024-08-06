@@ -23,10 +23,14 @@ export const CategoriSelect = ({ categories }: Props) => {
 
 
     const setOrderedCouple = useZonesBoundStore(state => state.setOrderedCouple)
+    const removeAllCouplesZone = useZonesBoundStore(state => state.removeAllCouplesZone)
+
+
 
     const onChangeSelect = (value: string) => {
         console.log(value);
         setOrderedCouple(value)
+        removeAllCouplesZone()
     }
 
     return (

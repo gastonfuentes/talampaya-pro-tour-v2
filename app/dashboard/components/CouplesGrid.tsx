@@ -14,6 +14,8 @@ export const CouplesGrid = () => {
     const draggingCoupleId = useZonesBoundStore(state => state.draggingCoupleId)
     const setMoveCouple = useZonesBoundStore(state => state.setMoveCouple)
 
+    const removeCoupleZone = useZonesBoundStore(state => state.removeCoupleZone)
+
 
 
     const handleDrop = (event: DragEvent<HTMLElement>) => {
@@ -23,6 +25,12 @@ export const CouplesGrid = () => {
         //buscar pareja en el array de parejas designadas y sacarla
         //asignar pareja en el array de parejas ordenadas por categorias
         setMoveCouple(draggingCoupleId!)
+
+        //borrar couple de la zona en su posicion correspondiente
+        const position = event.dataTransfer.getData("text");
+        console.log(position);
+        removeCoupleZone(position)
+
     }
 
 

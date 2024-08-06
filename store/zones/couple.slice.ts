@@ -47,6 +47,12 @@ export interface CoupleSlice {
     //mover pareja del array asignadas a el array de ordenadas
     setMoveCouple: (id: string) => void
 
+    //quitar couple de la zona recibiendo la posicion por parametro
+    removeCoupleZone: (position: string) => void
+
+    //quitar todas las parejas de la zona
+    removeAllCouplesZone: () => void
+
 }
 
 export const createCoupleSlice: StateCreator<CoupleSlice> = (set, get) => ({
@@ -130,7 +136,19 @@ export const createCoupleSlice: StateCreator<CoupleSlice> = (set, get) => ({
             ]
 
         }))
-    }
+    },
+
+    removeCoupleZone: (position: string) => {
+
+        if (position === 'position1') set({ coupleOne: undefined })
+        if (position === 'position2') set({ coupleTwo: undefined })
+        //if(position === 'position3') set({ coupleTwo : undefined })
+    },
+
+    removeAllCouplesZone: () => set({
+        coupleOne: undefined,
+        coupleTwo: undefined
+    })
 
     // getCouplesNotAssigned: () => get().orderedCouples.filter(couple => couple.asignado === false)
 
