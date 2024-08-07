@@ -30,7 +30,7 @@ const menuItems = [
 export const Sidebar = () => {
     return (
 
-        <div id="menu" style={{ width: '400px' }} className="bg-gray-900 min-h-screen z-10 text-slate-300 w-64  left-0">
+        <div id="menu" style={{ width: '250px' }} className="bg-gray-900 min-h-screen z-10 text-slate-300 w-64  left-0">
 
             <div id="logo" className="my-4 px-6">
                 <h1 className="flex items-center text-lg md:text-2xl font-bold text-white">

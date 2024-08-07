@@ -1,25 +1,25 @@
 'use client'
 
-import { ZoneDays } from "@/interfaces"
+import { ZoneHours } from "@/interfaces"
 import { useZonesBoundStore } from "@/store/zones"
 
 
 interface Props {
-    dias: ZoneDays[],
+    hours: ZoneHours[],
     partido: number
 }
 
 
-export const SelectedDayGame = ({ dias, partido }: Props) => {
+export const SelectedHourGame = ({ hours, partido }: Props) => {
 
 
-    const setDayGame = useZonesBoundStore(state => state.setDayGame)
+    const setHourGame = useZonesBoundStore(state => state.setHourGame)
 
 
     const onChangeOptions = (e: React.ChangeEvent<HTMLSelectElement>) => {
         console.log(e.currentTarget.value);
-        const day = e.currentTarget.value
-        setDayGame(partido, day)
+        const hour = e.currentTarget.value
+        setHourGame(partido, hour)
 
     }
 
@@ -30,9 +30,9 @@ export const SelectedDayGame = ({ dias, partido }: Props) => {
 
             <option value=""> </option>
 
-            {dias?.map(dia => (
+            {hours?.map(hour => (
 
-                <option value={dia}>{dia}</option>
+                <option value={hour}>{hour}</option>
 
             ))}
 

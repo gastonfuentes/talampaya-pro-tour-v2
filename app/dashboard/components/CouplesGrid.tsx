@@ -42,7 +42,7 @@ export const CouplesGrid = () => {
             }}
             onDragLeave={() => console.log('onDragLeave')}
             onDrop={handleDrop}
-            className='w-1/4'>
+            className='w-1/5'>
             {orderedCouples?.map(couple => (
                 <CoupleCard key={couple.id} couple={couple} />
             ))}

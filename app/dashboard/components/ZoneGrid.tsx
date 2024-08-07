@@ -6,6 +6,10 @@ import { CoupleCard } from "./CoupleCard"
 import { CoupleCardFlat } from "./CoupleCardFlat"
 import { SelectedNameZone } from "./SelectedNameZone"
 import { SelectedDayGame } from "./SelectedDayGame"
+import { SelectedHourGame } from "./SelectedHourGame"
+import { SelectedClubGame } from "./SelectedClubGame"
+import { SelectedCourtGame } from "./SelectedCourtGame"
+import { SelectedGamesSet } from "./SelectedGamesSet"
 
 
 
@@ -32,6 +36,10 @@ export const ZoneGrid = ({ position }: Props) => {
     const zoneDays = useZonesBoundStore(state => state.zoneDays)
 
     const days = useZonesBoundStore(state => state.days)
+    const hours = useZonesBoundStore(state => state.hours)
+    const clubs = useZonesBoundStore(state => state.clubs)
+    const courts = useZonesBoundStore(state => state.courts)
+    const gamesSet = useZonesBoundStore(state => state.gamesSet)
 
 
     const [hidratado, setHidratado] = useState(false)
@@ -98,22 +106,24 @@ export const ZoneGrid = ({ position }: Props) => {
         <>
             {hidratado ? < table className="w-full border bg-slate-300 text-center " >
                 <tbody>
-                    <tr className="font-bold">
+                    <tr className="font-bold text-sm">
                         <td className="border border-orange-600 w-1/12">N</td>
                         <td className="border border-orange-600 w-3/12"><SelectedNameZone nameZones={nameZones} /></td>
                         <td className="border border-orange-600 w-1/12">DIA</td>
-                        <td className="border border-orange-600 w-1/12">HORA</td>
-                        <td className="border border-orange-600 w-1/12">CLUB</td>
+                        <td className="border border-orange-600 w-2/12">HORA</td>
+                        <td className="border border-orange-600 w-2/12">CLUB</td>
                         <td className="border border-orange-600 w-1/12">CANCHA</td>
                         <td className="border border-orange-600 w-4/12 text-sm">
-                            <table>
-                                <tbody>
-                                    <tr>RESULTADO</tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>2</td>
-                                        <td>3</td>
-                                        <td>F</td>
+                            <table className="w-full text-center bg-gray-500">
+                                <tbody className="w-full">
+                                    {/* <tr className="bg-slate-100">
+                                        <td className=""></td>
+                                    </tr> */}
+                                    <tr className="bg-blue-900">
+                                        <td className=" bg-red-600">1</td>
+                                        <td className=" bg-red-400">2</td>
+                                        <td className=" bg-red-400">3</td>
+                                        <td className="">F</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -158,23 +168,23 @@ export const ZoneGrid = ({ position }: Props) => {
                             </table>
                         </td>
                         <td className="border border-orange-600 w-1/12"><SelectedDayGame dias={days} partido={1} /> </td>
-                        <td className="border border-orange-600 w-1/12"><input type="text" className="w-10" /></td>
-                        <td className="border border-orange-600 w-1/12"><input type="text" className="w-10" /></td>
-                        <td className="border border-orange-600 w-1/12"><input type="text" className="w-10" /></td>
+                        <td className="border border-orange-600 w-1/12"><SelectedHourGame hours={hours} partido={1} /></td>
+                        <td className="border border-orange-600 w-1/12"><SelectedClubGame clubs={clubs} partido={1} /></td>
+                        <td className="border border-orange-600 w-1/12"><SelectedCourtGame courts={courts} partido={1} /></td>
                         <td className="border border-orange-600 w-4/12 text-sm">
-                            <table>
+                            <table className="w-full">
                                 <tbody>
                                     <tr>
-                                        <td><input type="text" className="w-3/4" /></td>
-                                        <td><input type="text" className="w-3/4" /></td>
-                                        <td><input type="text" className="w-3/4" /></td>
-                                        <td><input type="text" className="w-3/4" /></td>
+                                        <td className="w-1/4"><SelectedGamesSet gamesSet={gamesSet} pareja={1} partido={1} set={1} /></td>
+                                        <td className="w-1/4"><SelectedGamesSet gamesSet={gamesSet} pareja={1} partido={1} set={2} /></td>
+                                        <td className="w-1/4"><SelectedGamesSet gamesSet={gamesSet} pareja={1} partido={1} set={3} /></td>
+                                        <td className="w-1/4"><input type="text" className="w-1/4" /></td>
                                     </tr>
                                     <tr>
-                                        <td><input type="text" className="w-3/4" /></td>
-                                        <td><input type="text" className="w-3/4" /></td>
-                                        <td><input type="text" className="w-3/4" /></td>
-                                        <td><input type="text" className="w-3/4" /></td>
+                                        <td><SelectedGamesSet gamesSet={gamesSet} pareja={2} partido={1} set={1} /></td>
+                                        <td><SelectedGamesSet gamesSet={gamesSet} pareja={2} partido={1} set={2} /></td>
+                                        <td><SelectedGamesSet gamesSet={gamesSet} pareja={2} partido={1} set={3} /></td>
+                                        <td><input type="text" className="w-1/4" /></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -218,24 +228,24 @@ export const ZoneGrid = ({ position }: Props) => {
                                 </tbody>
                             </table>
                         </td>
-                        <td className="border border-orange-600 w-1/12"><input type="text" className="w-10" /></td>
-                        <td className="border border-orange-600 w-1/12"><input type="text" className="w-10" /></td>
-                        <td className="border border-orange-600 w-1/12"><input type="text" className="w-10" /></td>
-                        <td className="border border-orange-600 w-1/12"><input type="text" className="w-10" /></td>
+                        <td className="border border-orange-600 w-1/12"><SelectedDayGame dias={days} partido={2} /></td>
+                        <td className="border border-orange-600 w-1/12"><SelectedHourGame hours={hours} partido={2} /></td>
+                        <td className="border border-orange-600 w-1/12"><SelectedClubGame clubs={clubs} partido={2} /></td>
+                        <td className="border border-orange-600 w-1/12"><SelectedCourtGame courts={courts} partido={2} /></td>
                         <td className="border border-orange-600 w-4/12 text-sm">
-                            <table>
+                            <table className="w-full">
                                 <tbody>
                                     <tr>
-                                        <td><input type="text" className="w-3/4" /></td>
-                                        <td><input type="text" className="w-3/4" /></td>
-                                        <td><input type="text" className="w-3/4" /></td>
-                                        <td><input type="text" className="w-3/4" /></td>
+                                        <td className="w-1/4"><SelectedGamesSet gamesSet={gamesSet} pareja={1} partido={2} set={1} /></td>
+                                        <td className="w-1/4"><SelectedGamesSet gamesSet={gamesSet} pareja={1} partido={2} set={2} /></td>
+                                        <td className="w-1/4"><SelectedGamesSet gamesSet={gamesSet} pareja={1} partido={2} set={3} /></td>
+                                        <td className="w-1/4"><input type="text" className="w-1/4" /></td>
                                     </tr>
                                     <tr>
-                                        <td><input type="text" className="w-3/4" /></td>
-                                        <td><input type="text" className="w-3/4" /></td>
-                                        <td><input type="text" className="w-3/4" /></td>
-                                        <td><input type="text" className="w-3/4" /></td>
+                                        <td><SelectedGamesSet gamesSet={gamesSet} pareja={2} partido={2} set={1} /></td>
+                                        <td><SelectedGamesSet gamesSet={gamesSet} pareja={2} partido={2} set={2} /></td>
+                                        <td><SelectedGamesSet gamesSet={gamesSet} pareja={2} partido={2} set={3} /></td>
+                                        <td><input type="text" className="w-1/4" /></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -279,24 +289,24 @@ export const ZoneGrid = ({ position }: Props) => {
                                 </tbody>
                             </table>
                         </td>
-                        <td className="border border-orange-600 w-1/12"><input type="text" className="w-10" /></td>
-                        <td className="border border-orange-600 w-1/12"><input type="text" className="w-10" /></td>
-                        <td className="border border-orange-600 w-1/12"><input type="text" className="w-10" /></td>
-                        <td className="border border-orange-600 w-1/12"><input type="text" className="w-10" /></td>
+                        <td className="border border-orange-600 w-1/12"><SelectedDayGame dias={days} partido={3} /></td>
+                        <td className="border border-orange-600 w-1/12"><SelectedHourGame hours={hours} partido={3} /></td>
+                        <td className="border border-orange-600 w-1/12"><SelectedClubGame clubs={clubs} partido={3} /></td>
+                        <td className="border border-orange-600 w-1/12"><SelectedCourtGame courts={courts} partido={3} /></td>
                         <td className="border border-orange-600 w-4/12 text-sm">
-                            <table>
+                            <table className="w-full">
                                 <tbody>
                                     <tr>
-                                        <td><input type="text" className="w-3/4" /></td>
-                                        <td><input type="text" className="w-3/4" /></td>
-                                        <td><input type="text" className="w-3/4" /></td>
-                                        <td><input type="text" className="w-3/4" /></td>
+                                        <td className="w-1/4"><SelectedGamesSet gamesSet={gamesSet} pareja={1} partido={3} set={1} /></td>
+                                        <td className="w-1/4"><SelectedGamesSet gamesSet={gamesSet} pareja={1} partido={3} set={2} /></td>
+                                        <td className="w-1/4"><SelectedGamesSet gamesSet={gamesSet} pareja={1} partido={3} set={3} /></td>
+                                        <td className="w-1/4"><input type="text" className="w-1/4" /></td>
                                     </tr>
                                     <tr>
-                                        <td><input type="text" className="w-3/4" /></td>
-                                        <td><input type="text" className="w-3/4" /></td>
-                                        <td><input type="text" className="w-3/4" /></td>
-                                        <td><input type="text" className="w-3/4" /></td>
+                                        <td><SelectedGamesSet gamesSet={gamesSet} pareja={2} partido={3} set={1} /></td>
+                                        <td><SelectedGamesSet gamesSet={gamesSet} pareja={2} partido={3} set={2} /></td>
+                                        <td><SelectedGamesSet gamesSet={gamesSet} pareja={2} partido={3} set={3} /></td>
+                                        <td><input type="text" className="w-1/4" /></td>
                                     </tr>
                                 </tbody>
                             </table>
