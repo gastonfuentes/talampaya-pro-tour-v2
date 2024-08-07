@@ -13,13 +13,13 @@ interface Props {
 export const SelectedDayGame = ({ dias, partido }: Props) => {
 
 
-    const setDayGame1 = useZonesBoundStore(state => state.setDayGame1)
+    const setDayGame = useZonesBoundStore(state => state.setDayGame)
 
 
     const onChangeOptions = (e: React.ChangeEvent<HTMLSelectElement>) => {
         console.log(e.currentTarget.value);
         const day = e.currentTarget.value
-        setDayGame1(day)
+        setDayGame(partido, day)
 
     }
 

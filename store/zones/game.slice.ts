@@ -18,6 +18,8 @@ export interface GameSlice {
 
     setDayGame1: (day: string) => void
 
+    setDayGame: (partido: number, day: string) => void
+
 }
 
 export const createGameSlice: StateCreator<GameSlice> = (set, get) => ({
@@ -99,10 +101,42 @@ export const createGameSlice: StateCreator<GameSlice> = (set, get) => ({
     days: ["15", "16", "17", "18"],
 
     setDayGame1: (day) => set((state) => ({
+
         game1: {
             ...state.game1,
             dia: day
         }
     })),
+
+    setDayGame: (partido: number, day: any) => {
+
+        if (partido === 1) {
+            set((state) => ({
+                game1: {
+                    ...state.game1,
+                    dia: day
+                }
+            }))
+        }
+
+        if (partido === 2) {
+            set((state) => ({
+                game2: {
+                    ...state.game2,
+                    dia: day
+                }
+            }))
+        }
+
+        if (partido === 3) {
+            set((state) => ({
+                game3: {
+                    ...state.game3,
+                    dia: day
+                }
+            }))
+        }
+    },
+
 
 })
