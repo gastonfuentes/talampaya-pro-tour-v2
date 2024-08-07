@@ -5,6 +5,7 @@ import { DragEvent, useEffect, useState } from "react"
 import { CoupleCard } from "./CoupleCard"
 import { CoupleCardFlat } from "./CoupleCardFlat"
 import { SelectedNameZone } from "./SelectedNameZone"
+import { SelectedDayGame } from "./SelectedDayGame"
 
 
 
@@ -26,6 +27,11 @@ export const ZoneGrid = ({ position }: Props) => {
 
     const setNewOrderedCouples = useZonesBoundStore(state => state.setNewOrderedCouples)
     const setDesignatedCouples = useZonesBoundStore(state => state.setDesignatedCouples)
+
+    const nameZones = useZonesBoundStore(state => state.nameZones)
+    const zoneDays = useZonesBoundStore(state => state.zoneDays)
+
+    const days = useZonesBoundStore(state => state.days)
 
 
     const [hidratado, setHidratado] = useState(false)
@@ -94,7 +100,7 @@ export const ZoneGrid = ({ position }: Props) => {
                 <tbody>
                     <tr className="font-bold">
                         <td className="border border-orange-600 w-1/12">N</td>
-                        <td className="border border-orange-600 w-3/12"><SelectedNameZone /></td>
+                        <td className="border border-orange-600 w-3/12"><SelectedNameZone nameZones={nameZones} /></td>
                         <td className="border border-orange-600 w-1/12">DIA</td>
                         <td className="border border-orange-600 w-1/12">HORA</td>
                         <td className="border border-orange-600 w-1/12">CLUB</td>
@@ -121,7 +127,7 @@ export const ZoneGrid = ({ position }: Props) => {
                             <table>
                                 <tbody>
                                     <tr>
-                                        <td className="border-r-2 p-1 font-bold">A</td>
+                                        <td className="border-r-2 p-1 font-bold text-blue-700">A</td>
                                         <td
                                             className="w-full bg-slate-100"
                                             onDragOver={handleOver}
@@ -137,7 +143,7 @@ export const ZoneGrid = ({ position }: Props) => {
                             <table>
                                 <tbody>
                                     <tr>
-                                        <td className="border-r-2 p-1 font-bold">B</td>
+                                        <td className="border-r-2 p-1 font-bold text-blue-700">B</td>
                                         <td
                                             className="w-full bg-slate-100"
                                             onDragOver={handleOver}
@@ -151,7 +157,7 @@ export const ZoneGrid = ({ position }: Props) => {
                                 </tbody>
                             </table>
                         </td>
-                        <td className="border border-orange-600 w-1/12"><input type="text" className="w-10" /></td>
+                        <td className="border border-orange-600 w-1/12"><SelectedDayGame dias={days} partido={1} /> </td>
                         <td className="border border-orange-600 w-1/12"><input type="text" className="w-10" /></td>
                         <td className="border border-orange-600 w-1/12"><input type="text" className="w-10" /></td>
                         <td className="border border-orange-600 w-1/12"><input type="text" className="w-10" /></td>
@@ -198,7 +204,7 @@ export const ZoneGrid = ({ position }: Props) => {
                             <table>
                                 <tbody>
                                     <tr>
-                                        <td className="border-r-2 p-1 font-bold">C</td>
+                                        <td className="border-r-2 p-1 font-bold text-blue-700">C</td>
                                         <td
                                             className="w-full bg-slate-100"
                                             onDragOver={handleOver}

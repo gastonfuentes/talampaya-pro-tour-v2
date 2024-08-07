@@ -1,23 +1,25 @@
 'use client'
 
-import { ZoneName } from "@/interfaces"
+import { ZoneDays } from "@/interfaces"
 import { useZonesBoundStore } from "@/store/zones"
 
 
 interface Props {
-    nameZones: ZoneName[]
+    dias: ZoneDays[],
+    partido: number
 }
 
 
-export const SelectedNameZone = ({ nameZones }: Props) => {
+export const SelectedDayGame = ({ dias, partido }: Props) => {
 
 
-    const setNameZone = useZonesBoundStore(state => state.setNameZone)
+    const setDayGame1 = useZonesBoundStore(state => state.setDayGame1)
+
 
     const onChangeOptions = (e: React.ChangeEvent<HTMLSelectElement>) => {
         console.log(e.currentTarget.value);
-        const nameZone = e.currentTarget.value
-        setNameZone(nameZone)
+        const day = e.currentTarget.value
+        setDayGame1(day)
 
     }
 
@@ -26,9 +28,9 @@ export const SelectedNameZone = ({ nameZones }: Props) => {
 
         <select onChange={onChangeOptions} id="zoneNames" className="bg-gray-50 border border-gray-300 text-blue-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
-            {nameZones?.map(name => (
+            {dias?.map(dia => (
 
-                <option value={name}>{name}</option>
+                <option value={dia}>{dia}</option>
 
             ))}
 
