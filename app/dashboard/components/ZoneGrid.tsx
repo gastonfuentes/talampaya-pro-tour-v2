@@ -10,6 +10,7 @@ import { SelectedHourGame } from "./SelectedHourGame"
 import { SelectedClubGame } from "./SelectedClubGame"
 import { SelectedCourtGame } from "./SelectedCourtGame"
 import { SelectedGamesSet } from "./SelectedGamesSet"
+import { CheckboxWinGame } from "./CheckboxWinGame"
 
 
 
@@ -113,21 +114,21 @@ export const ZoneGrid = ({ position }: Props) => {
                         <td className="border border-orange-600 w-2/12">HORA</td>
                         <td className="border border-orange-600 w-2/12">CLUB</td>
                         <td className="border border-orange-600 w-1/12">CANCHA</td>
-                        <td className="border border-orange-600 w-4/12 text-sm">
+                        <td className="border border-orange-600 w-3/12 text-sm">
                             <table className="w-full text-center bg-gray-500">
                                 <tbody className="w-full">
                                     {/* <tr className="bg-slate-100">
                                         <td className=""></td>
                                     </tr> */}
                                     <tr className="bg-blue-900">
-                                        <td className=" bg-red-600">1</td>
-                                        <td className=" bg-red-400">2</td>
-                                        <td className=" bg-red-400">3</td>
-                                        <td className="">F</td>
+                                        <td className=" bg-blue-300">1</td>
+                                        <td className=" bg-blue-400">2</td>
+                                        <td className=" bg-blue-500">3</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </td>
+                        <td className="border border-orange-600 w-1/12 text-sm">FINAL</td>
                     </tr>
                 </tbody>
                 <tbody>
@@ -172,23 +173,24 @@ export const ZoneGrid = ({ position }: Props) => {
                         <td className="border border-orange-600 w-1/12"><SelectedClubGame clubs={clubs} partido={1} /></td>
                         <td className="border border-orange-600 w-1/12"><SelectedCourtGame courts={courts} partido={1} /></td>
                         <td className="border border-orange-600 w-4/12 text-sm">
-                            <table className="w-full">
+                            <table>
                                 <tbody>
                                     <tr>
                                         <td className="w-1/4"><SelectedGamesSet gamesSet={gamesSet} pareja={1} partido={1} set={1} /></td>
                                         <td className="w-1/4"><SelectedGamesSet gamesSet={gamesSet} pareja={1} partido={1} set={2} /></td>
                                         <td className="w-1/4"><SelectedGamesSet gamesSet={gamesSet} pareja={1} partido={1} set={3} /></td>
-                                        <td className="w-1/4"><input type="text" className="w-1/4" /></td>
+
                                     </tr>
                                     <tr>
                                         <td><SelectedGamesSet gamesSet={gamesSet} pareja={2} partido={1} set={1} /></td>
                                         <td><SelectedGamesSet gamesSet={gamesSet} pareja={2} partido={1} set={2} /></td>
                                         <td><SelectedGamesSet gamesSet={gamesSet} pareja={2} partido={1} set={3} /></td>
-                                        <td><input type="text" className="w-1/4" /></td>
+
                                     </tr>
                                 </tbody>
                             </table>
                         </td>
+                        <td className="border border-orange-600 w-1/12 text-sm"><CheckboxWinGame partido={1} /></td>
                     </tr>
                 </tbody>
                 <tbody>
@@ -239,17 +241,18 @@ export const ZoneGrid = ({ position }: Props) => {
                                         <td className="w-1/4"><SelectedGamesSet gamesSet={gamesSet} pareja={1} partido={2} set={1} /></td>
                                         <td className="w-1/4"><SelectedGamesSet gamesSet={gamesSet} pareja={1} partido={2} set={2} /></td>
                                         <td className="w-1/4"><SelectedGamesSet gamesSet={gamesSet} pareja={1} partido={2} set={3} /></td>
-                                        <td className="w-1/4"><input type="text" className="w-1/4" /></td>
+
                                     </tr>
                                     <tr>
                                         <td><SelectedGamesSet gamesSet={gamesSet} pareja={2} partido={2} set={1} /></td>
                                         <td><SelectedGamesSet gamesSet={gamesSet} pareja={2} partido={2} set={2} /></td>
                                         <td><SelectedGamesSet gamesSet={gamesSet} pareja={2} partido={2} set={3} /></td>
-                                        <td><input type="text" className="w-1/4" /></td>
+
                                     </tr>
                                 </tbody>
                             </table>
                         </td>
+                        <td className="border border-orange-600 w-1/12 text-sm"><CheckboxWinGame partido={2} /></td>
                     </tr>
                 </tbody>
                 <tbody>
@@ -300,17 +303,18 @@ export const ZoneGrid = ({ position }: Props) => {
                                         <td className="w-1/4"><SelectedGamesSet gamesSet={gamesSet} pareja={1} partido={3} set={1} /></td>
                                         <td className="w-1/4"><SelectedGamesSet gamesSet={gamesSet} pareja={1} partido={3} set={2} /></td>
                                         <td className="w-1/4"><SelectedGamesSet gamesSet={gamesSet} pareja={1} partido={3} set={3} /></td>
-                                        <td className="w-1/4"><input type="text" className="w-1/4" /></td>
+
                                     </tr>
                                     <tr>
                                         <td><SelectedGamesSet gamesSet={gamesSet} pareja={2} partido={3} set={1} /></td>
                                         <td><SelectedGamesSet gamesSet={gamesSet} pareja={2} partido={3} set={2} /></td>
                                         <td><SelectedGamesSet gamesSet={gamesSet} pareja={2} partido={3} set={3} /></td>
-                                        <td><input type="text" className="w-1/4" /></td>
+
                                     </tr>
                                 </tbody>
                             </table>
                         </td>
+                        <td className="border border-orange-600 w-1/12 text-sm"><CheckboxWinGame partido={3} /></td>
                     </tr>
                 </tbody>
             </table >
