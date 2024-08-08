@@ -32,7 +32,7 @@ export const SelectedHourGame = ({ hours, partido }: Props) => {
 
             {hours?.map(hour => (
 
-                <option value={hour}>{hour}</option>
+                <option key={hour} value={hour}>{hour}</option>
 
             ))}
 

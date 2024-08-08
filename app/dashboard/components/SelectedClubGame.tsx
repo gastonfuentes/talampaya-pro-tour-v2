@@ -32,7 +32,7 @@ export const SelectedClubGame = ({ clubs, partido }: Props) => {
 
             {clubs?.map(club => (
 
-                <option value={club}>{club}</option>
+                <option key={club} value={club}>{club}</option>
 
             ))}
 

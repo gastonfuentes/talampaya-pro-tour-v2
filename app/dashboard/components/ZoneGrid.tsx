@@ -11,6 +11,11 @@ import { SelectedClubGame } from "./SelectedClubGame"
 import { SelectedCourtGame } from "./SelectedCourtGame"
 import { SelectedGamesSet } from "./SelectedGamesSet"
 import { CheckboxWinGame } from "./CheckboxWinGame"
+import { Button } from "@/components/ui/button"
+import { addZone } from "../actions/zone-actions"
+
+import { redirect } from "next/navigation"
+import { createClient } from "@/utils/supabase/client"
 
 
 
@@ -42,15 +47,12 @@ export const ZoneGrid = ({ position }: Props) => {
     const courts = useZonesBoundStore(state => state.courts)
     const gamesSet = useZonesBoundStore(state => state.gamesSet)
 
+    const setIdCoupleInGame = useZonesBoundStore(state => state.setIdCoupleInGame)
 
-    const [hidratado, setHidratado] = useState(false)
+    const game1 = useZonesBoundStore(state => state.game1)
 
-    useEffect(() => {
 
-        setHidratado(true)
 
-    }
-        , [])
 
 
 
@@ -67,6 +69,9 @@ export const ZoneGrid = ({ position }: Props) => {
         setNewOrderedCouples!(draggingCoupleId!);
         //agrega pareja al array de parejas designadas
         setDesignatedCouples(draggingCoupleId!)
+        //agrega id de la pareja a los games correspondientes 
+        setIdCoupleInGame(draggingCoupleId!, 1, 1)
+        setIdCoupleInGame(draggingCoupleId!, 3, 1)
     }
 
     const handleDropCoupleTwo = (event: DragEvent<HTMLTableCellElement>) => {
@@ -79,6 +84,9 @@ export const ZoneGrid = ({ position }: Props) => {
         setNewOrderedCouples!(draggingCoupleId!);
         //agrega pareja al array de parejas designadas
         setDesignatedCouples(draggingCoupleId!)
+        //agrega id de la pareja a los game correspondientes 
+        setIdCoupleInGame(draggingCoupleId!, 1, 2)
+        setIdCoupleInGame(draggingCoupleId!, 2, 1)
     }
 
     const handleDropCoupleThree = (event: DragEvent<HTMLTableCellElement>) => {
@@ -90,6 +98,9 @@ export const ZoneGrid = ({ position }: Props) => {
         setNewOrderedCouples!(draggingCoupleId!);
         //agrega pareja al array de parejas designadas
         setDesignatedCouples(draggingCoupleId!)
+        //agrega id de la pareja a los game correspondientes 
+        setIdCoupleInGame(draggingCoupleId!, 2, 2)
+        setIdCoupleInGame(draggingCoupleId!, 3, 2)
     }
 
     const handleStart = (event: DragEvent<HTMLTableCellElement>) => {
@@ -99,6 +110,55 @@ export const ZoneGrid = ({ position }: Props) => {
 
     }
 
+    const cargarZona = async () => {
+
+        console.log({ game1 });
+
+        const supabase = createClient()
+
+        const { error } = await supabase
+            .from('partidos')
+            .insert({
+                dia: game1.dia,
+                hora: game1.hora,
+                club: game1.club,
+                cancha: game1.cancha,
+                id_pareja1: game1.id_pareja1,
+                id_pareja2: game1.id_pareja2,
+                primerSet_pareja1: game1.primerSet_pareja1,
+                primerSet_pareja2: game1.primerSet_pareja2,
+                segundoSet_pareja1: game1.segundoSet_pareja1,
+                segundoSet_pareja2: game1.segundoSet_pareja2,
+                tercerSet_pareja1: game1.tercerSet_pareja1,
+                tercerSet_pareja2: game1.tercerSet_pareja2,
+                ganador_pareja1: game1.ganador_pareja1,
+                ganador_pareja2: game1.ganador_pareja2
+
+            })
+
+        if (error) throw new Error(error.message)
+
+
+        setDisabled(true)
+
+
+    }
+
+    const modificarZona = () => {
+        setDisabled(false)
+    }
+
+
+    const [disabled, setDisabled] = useState(false)
+
+    const [hidratado, setHidratado] = useState(false)
+
+    useEffect(() => {
+
+        setHidratado(true)
+
+    }
+        , [])
 
 
 
@@ -109,7 +169,7 @@ export const ZoneGrid = ({ position }: Props) => {
                 <tbody>
                     <tr className="font-bold text-sm">
                         <td className="border border-orange-600 w-1/12">N</td>
-                        <td className="border border-orange-600 w-3/12"><SelectedNameZone nameZones={nameZones} /></td>
+                        <td className="border border-orange-600 w-3/12"><SelectedNameZone nameZones={nameZones} disabled={disabled} /></td>
                         <td className="border border-orange-600 w-1/12">DIA</td>
                         <td className="border border-orange-600 w-2/12">HORA</td>
                         <td className="border border-orange-600 w-2/12">CLUB</td>
@@ -317,7 +377,14 @@ export const ZoneGrid = ({ position }: Props) => {
                         <td className="border border-orange-600 w-1/12 text-sm"><CheckboxWinGame partido={3} /></td>
                     </tr>
                 </tbody>
+                <tbody>
+                    <tr>
+                        <td><Button type="submit" onClick={cargarZona} >GRABAR ZONA </Button> </td>
+                        <td><Button type="submit" onClick={modificarZona} >MODIFICAR ZONA </Button> </td>
+                    </tr>
+                </tbody>
             </table >
+
 
                 : null
             }

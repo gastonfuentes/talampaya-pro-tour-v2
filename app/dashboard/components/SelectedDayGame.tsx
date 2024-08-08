@@ -32,7 +32,7 @@ export const SelectedDayGame = ({ dias, partido }: Props) => {
 
             {dias?.map(dia => (
 
-                <option value={dia}>{dia}</option>
+                <option key={dia} value={dia}>{dia}</option>
 
             ))}
 

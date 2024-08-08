@@ -34,7 +34,7 @@ export const SelectedGamesSet = ({ gamesSet, partido, pareja, set }: Props) => {
 
             {gamesSet?.map(game => (
 
-                <option value={game}>{game}</option>
+                <option key={game} value={game}>{game}</option>
 
             ))}
 

@@ -31,7 +31,7 @@ export const SelectedCourtGame = ({ courts, partido }: Props) => {
 
             {courts?.map(court => (
 
-                <option value={court}>{court}</option>
+                <option key={court} value={court}>{court}</option>
 
             ))}
 

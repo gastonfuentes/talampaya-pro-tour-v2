@@ -28,6 +28,7 @@ export interface GameSlice {
     setCourtGame: (partido: number, court: number) => void
     setGamesSet: (partido: number, pareja: number, sets: number, game: number) => void
     setCoupleWin: (partido: number, pareja: number) => void
+    setIdCoupleInGame: (idCouple: string, game: number, pareja: number) => void
 
 }
 
@@ -304,6 +305,25 @@ export const createGameSlice: StateCreator<GameSlice> = (set, get) => ({
         if (partido === 3) {
             if (pareja === 1) set((state) => ({ game3: { ...state.game3, ganador_pareja1: true, ganador_pareja2: false } }))
             if (pareja === 2) set((state) => ({ game3: { ...state.game3, ganador_pareja2: true, ganador_pareja1: false } }))
+        }
+
+    },
+
+    setIdCoupleInGame: (idCouple: string, game: number, pareja: number) => {
+
+        if (game === 1) {
+            if (pareja === 1) set((state) => ({ game1: { ...state.game1, id_pareja1: idCouple } }))
+            if (pareja === 2) set((state) => ({ game1: { ...state.game1, id_pareja2: idCouple } }))
+        }
+
+        if (game === 2) {
+            if (pareja === 1) set((state) => ({ game2: { ...state.game2, id_pareja1: idCouple } }))
+            if (pareja === 2) set((state) => ({ game2: { ...state.game2, id_pareja2: idCouple } }))
+        }
+
+        if (game === 3) {
+            if (pareja === 1) set((state) => ({ game3: { ...state.game3, id_pareja1: idCouple } }))
+            if (pareja === 2) set((state) => ({ game3: { ...state.game3, id_pareja2: idCouple } }))
         }
 
     }
